@@ -28,7 +28,7 @@ end
 local set_groups = function()
   local highlights = {
     -- Syntax Groups (descriptions and ordering from `:h w18`)
-    { hg = "Comment", fg = c.gray05, gui = cfg.comment_style }, -- any comment
+    { hg = "Comment", fg = c.gray06, gui = cfg.comment_style }, -- any comment
     { hg = "Constant", fg = c.cyan }, -- any constant
     { hg = "String", fg = c.green }, -- a string constant: "this is a string"
     { hg = "Character", fg = c.green }, -- a character constant: 'c', '\n'
@@ -81,8 +81,8 @@ local set_groups = function()
     { hg = "FoldColumn" }, --' foldcolumn'
     { hg = "SignColumn", bg = c.gray01 }, -- column where signs are displayed
     { hg = "IncSearch", fg = c.bright_yellow, bg = c.gray03 }, --' incsearch' highlighting; also used for the text replaced with ":s///c"
-    { hg = "LineNr", fg = c.gray04, bg = c.gray02 }, -- Line number for " =number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
-    { hg = "CursorLineNr", bg = c.gray02 }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
+    { hg = "LineNr", fg = c.gray05, bg = c.gray02 }, -- Line number for " =number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
+    { hg = "CursorLineNr", fg = c.bright_yellow, bg = c.gray02 }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
     { hg = "MatchParen", fg = c.yellow, gui = "underline", cterm = "underline" }, -- The character under the cursor or just before it, if it is a paired bracket, and its match.
     { hg = "ModeMsg" }, --' showmode' message (e.g., "-- INSERT --")
     { hg = "MoreMsg" }, -- more-prompt
@@ -96,7 +96,7 @@ local set_groups = function()
     { hg = "QuickFixLine", fg = c.cyan, bg = c.gray02 }, -- Current quickfix item in the quickfix window.
     { hg = "Search", fg = c.yellow, bg = c.black }, -- Last search pattern highlighting (see 'hlsearch'). Also used for similar items that need to stand out.
     { hg = "SpecialKey", fg = c.special_grey }, -- Meta and special keys listed with " =map", also for text used to show unprintable characters in the text, 'listchars'. Generally: text that is displayed differently from what it really is.
-    { hg = "SpellBad", fg = c.red, gui = "underline" }, -- Word that is not recognized by the spellchecker. This will be combined with the highlighting used otherwise.
+    { hg = "SpellBad", fg = c.red, gui = "undercurl" }, -- Word that is not recognized by the spellchecker. This will be combined with the highlighting used otherwise.
     { hg = "SpellCap", fg = c.yellow }, -- Word that should start with a capital. This will be combined with the highlighting used otherwise.
     { hg = "SpellLocal", fg = c.yellow }, -- Word that is recognized by the spellchecker as one that is used in another region. This will be combined with the highlighting used otherwise.
     { hg = "SpellRare", fg = c.yellow }, -- Word that is recognized by the spellchecker as one that is hardly ever used. spell This will be combined with the highlighting used otherwise.
@@ -209,14 +209,18 @@ local set_groups = function()
     { hg = "@lsp.typemod.variable.injected", link = "@variable" },
 
     -- Diagnostics
-    { hg = "DiagnosticError", fg = c.red },
-    { hg = "DiagnosticWarn", fg = c.yellow },
-    { hg = "DiagnosticInfo", fg = c.blue },
-    { hg = "DiagnosticHint", fg = c.cyan },
+    { hg = "DiagnosticError", fg = c.red, bg = c.gray01 },
+    { hg = "DiagnosticWarn", fg = c.yellow, bg = c.gray01 },
+    { hg = "DiagnosticInfo", fg = c.blue, bg = c.gray01 },
+    { hg = "DiagnosticHint", fg = c.cyan, bg = c.gray01 },
     { hg = "DiagnosticUnderlineError", fg = c.red, gui = "underline" },
     { hg = "DiagnosticUnderlineWarn", fg = c.yellow, gui = "underline" },
     { hg = "DiagnosticUnderlineInfo", fg = c.blue, gui = "underline" },
     { hg = "DiagnosticUnderlineHint", fg = c.cyan, gui = "underline" },
+    { hg = "DiagnosticVirtualTextError", fg = c.red },
+    { hg = "DiagnosticVirtualTextWarn", fg = c.yellow },
+    { hg = "DiagnosticVirtualTextInfo", fg = c.blue },
+    { hg = "DiagnosticVirtualTextHint", fg = c.cyan },
 
     -- Neovim's built-in language server client
     { hg = "LspReferenceWrite", fg = c.blue, gui = "underline" },
@@ -225,9 +229,9 @@ local set_groups = function()
     { hg = "LspSignatureActiveParameter", fg = c.yellow, gui = "bold" },
 
     -- GitSigns
-    { hg = "GitSignsAdd", fg = c.green },
-    { hg = "GitSignsChange", fg = c.yellow },
-    { hg = "GitSignsDelete", fg = c.red },
+    { hg = "GitSignsAdd", fg = c.green, bg = c.gray01 },
+    { hg = "GitSignsChange", fg = c.yellow, bg = c.gray01 },
+    { hg = "GitSignsDelete", fg = c.red, bg = c.gray01 },
 
     -- Diff
     { hg = "diffAdded", fg = c.bright_green },
